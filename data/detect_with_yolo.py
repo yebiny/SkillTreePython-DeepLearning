@@ -63,7 +63,8 @@ def draw_result(img,
   IPython.display.clear_output(wait=True) # 출력결과 매번 지워줌
   cv2_imshow(img)
 
-def img2detect(img, 
+def img2detect(img, model, predict_layer_names, 
+               class_names, class_colors,
                min_confidence=.5,
                font_size=.5):
   boxes, confidences, class_ids = get_preds(img, model, predict_layer_names, min_confidence=0.5)

@@ -2,7 +2,7 @@ import numpy as numpy
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-def show_featuremap(sample_idx, fmap, cnn_idxs, flatten_idxs):
+def show_featuremap(sample_idx, fmaps, cnn_idxs, flatten_idxs):
   for idx in cnn_idxs:
     fmap = fmaps[idx][sample_idx]
     chs = fmap.shape[2]

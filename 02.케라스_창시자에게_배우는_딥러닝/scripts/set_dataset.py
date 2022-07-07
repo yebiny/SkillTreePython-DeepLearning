@@ -26,8 +26,8 @@ def set_dogs_and_cats(org_dir, new_dir):
   print('* Finished dataset setting')
   
   for dir_type in ['train', 'valid', 'test']:
-    dir_path = f'new_ds/{dir_type}'
+    dir_path = f'{new_dir}/{dir_type}'
     for dir_label in ['cat' , 'dog']:
-      dir_path = f'new_ds/{dir_type}/{dir_label}'
+      dir_path = f'{new_dir}/{dir_type}/{dir_label}'
       n_imgs = len(os.listdir(dir_path))
       print(f'* {dir_path} Total images : {n_imgs}' )

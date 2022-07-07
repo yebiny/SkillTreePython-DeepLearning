@@ -12,7 +12,7 @@ def set_dogs_and_cats(org_dir, new_dir):
     for dir_label in ['cat' , 'dog']:
       dir_path = f'{new_dir}/{dir_type}/{dir_label}'
       os.mkdir(dir_path)
-      print(f'* ㄴ{dir_path} is made')
+      print(f'  ㄴ{dir_path} is made')
 
   for img_path in org_img_paths:
     info = img_path.split('/')[-1] # cat.0.jpg
@@ -23,3 +23,4 @@ def set_dogs_and_cats(org_dir, new_dir):
     else: target_path = f'{new_dir}/test/{label}/{info}'
     #print(label, idx, img_path, target_path)
     shutil.copyfile(img_path, target_path)
+  print('* Finished dataset setting')

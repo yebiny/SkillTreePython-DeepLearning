@@ -14,7 +14,6 @@ def set_dogs_and_cats(org_dir, new_dir):
       os.mkdir(dir_path)
       print(f'* ㄴ{dir_path} is made')
 
-  org_img_paths = 
   for img_path in org_img_paths:
     info = img_path.split('/')[-1] # cat.0.jpg
     label, idx, _ = info.split('.')

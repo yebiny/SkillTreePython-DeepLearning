@@ -1,7 +1,7 @@
 import shutil, os, glob
 
 def set_dogs_and_cats(org_dir, new_dir):
-  org_img_paths = sorted(glob.glob(f'{org_dir}*jpg'))
+  org_img_paths = sorted(glob.glob(f'{org_dir}/*jpg'))
   print(f'* found {len(org_img_paths)} images in {org_img_paths}')
   os.mkdir(new_dir)
   

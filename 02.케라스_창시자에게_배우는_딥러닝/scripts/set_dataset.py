@@ -24,3 +24,10 @@ def set_dogs_and_cats(org_dir, new_dir):
     #print(label, idx, img_path, target_path)
     shutil.copyfile(img_path, target_path)
   print('* Finished dataset setting')
+  
+  for dir_type in ['train', 'valid', 'test']:
+    dir_path = f'new_ds/{dir_type}'
+    for dir_label in ['cat' , 'dog']:
+      dir_path = f'new_ds/{dir_type}/{dir_label}'
+      n_imgs = len(os.listdir(dir_path))
+      print(f'* {dir_path} Total images : {n_imgs}' )

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 
 def plot_lcurve(hists, titles, colors, size=(12,4), x_itv=1):
   plt.figure(figsize=size)
@@ -32,3 +33,16 @@ def plot_lcurve(hists, titles, colors, size=(12,4), x_itv=1):
     x, y = epochs[-1], hist.history['val_acc'][-1]
     plt.text(x, y, np.round(y,2), c=colors[i])
   plt.show()
+  
+  
+  
+def draw_cm(model, x_test, y_test, sparse=True, figsize=(12,12)):
+  y_pred = model.predict(x_test)
+  y_pred = np.argmax(y_pred, axis=1)
+  if sparse==False:
+    y_test = np.argmax(y_test, axis=1)
+  fig = plt.figure(figsize=figsize)
+  cm = confusion_matrix(y_test, y_pred, normalize='true')
+  cm = np.round(cm, 2)
+  sns.heatmap(cm, cmap='Blues', annot=True)
+  plt.ylabel('True')

@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
 
 def plot_lcurve(hists, titles, colors, size=(12,4), x_itv=1):
   plt.figure(figsize=size)

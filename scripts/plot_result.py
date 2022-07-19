@@ -22,7 +22,7 @@ def plot_lcurve(hists, titles, colors, size=(12,4), x_itv=1):
     x, y = epochs[-1], hist.history['val_loss'][-1]
     plt.text(x, y, np.round(y,2), c=colors[i])
   # acc
-  if 'acc' in hist.history
+  if 'acc' in hist.history:
     plt.subplot(122)
     for i, hist in enumerate(hists):
       acc = hist.history['acc']

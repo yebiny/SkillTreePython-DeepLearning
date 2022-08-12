@@ -37,20 +37,19 @@ class BuildModel():
     def _expand_label_input(x):
       y = K.expand_dims(x, axis=1)
       y = K.expand_dims(y, axis=1)
-      y = K.tile(y, [1, h, w, 1])
+      y = K.tile(y, [1, int(h/2), int(w/2), 1])
       return y
 
-    x = layers.Input(shape=self.img_shape, name='image')
-    c = layers.Input(shape= self.label_dim, name='condition')
-    c = layers.Lambda(_expand_label_input)(c)
+    in_x = layers.Input(shape=self.img_shape, name='disc_input_image')
+    x = layers.Conv2D(64, kernel_size=kernel_size, strides=2, padding='same', activation=activation)(in_x)
+    
+    in_c = layers.Input(shape= self.label_dim, name='disc_input_label')
+    c = layers.Lambda(_expand_label_input)(in_c)
     
     y = layers.concatenate([x, c], axis=3)
-    y = layers.Conv2D(64, kernel_size=kernel_size, strides=2, padding='same', activation=activation)(y)
-    y = layers.Dropout(.5)(y)
     y = layers.Conv2D(128, kernel_size=kernel_size, strides=2, padding='same', activation=activation)(y)
     y = layers.Dropout(.5)(y)
     y = layers.Flatten()(y)
 
     y = layers.Dense(1, activation=last_activation)(y)
-    return models.Model([x,c], y, name='Discriminator')
-
+    return models.Model([in_x,in_c], y, name='Discriminator')
